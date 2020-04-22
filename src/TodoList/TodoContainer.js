@@ -40,25 +40,6 @@ export default class TodoContainer extends Component {
 
     render() {
         return (
-            // <div>
-            //     <Layout>
-            //         <Header>
-            //             <Row justify="center">
-            //                 <Col span={4}>
-            //                     <PageHeader className="site-page-header"
-            //                         title="Todo List" />
-            //                 </Col>
-            //             </Row>
-            //         </Header>
-            //         <Content>
-            //             <TodoList todoList={this.state.todoList} />
-            //             hello content
-            //         </Content>
-            //         <Footer>
-            //             <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
-            //         </Footer>
-            //     </Layout>
-            // </div>
             <>
                 <Row>
                     <Col span={24}>
@@ -71,7 +52,8 @@ export default class TodoContainer extends Component {
                     <Col span={24}>
                         <Row gutter={[16,50]} justify="center">
                             <Col span={10}>
-                                <TodoList todoList={this.state.todoList}/>
+                                <TodoList todoList={this.state.todoList}
+                                updateTodoList={this.updateTodoList} />
                             </Col>
                         </Row>
                     </Col>
