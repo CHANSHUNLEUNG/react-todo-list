@@ -60,7 +60,8 @@ export default class TodoContainer extends Component {
                     <Col span={24}>
                         <Row justify="center">
                             <Col span={10}>
-                                <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
+                                <TodoForm todoList={this.state.todoList} 
+                                updateTodoList={this.updateTodoList} />
                             </Col>
                         </Row>
                     </Col>

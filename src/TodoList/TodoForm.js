@@ -19,7 +19,6 @@ export default class TodoForm extends Component {
         this.setState({
             todoContent: event.target.value,
         })
-        this.changeTodoListStatus(3);
     }
 
     addTodoList(){
@@ -27,11 +26,11 @@ export default class TodoForm extends Component {
         axios.post(ADD_TODO_URL,{
             content: this.state.todoContent,
             status: true,
+        }).then(response => {
+            console.log(response);
         })
     }
 
-
-    
 
     render() {
         return (
