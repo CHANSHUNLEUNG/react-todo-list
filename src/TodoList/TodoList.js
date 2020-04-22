@@ -14,10 +14,10 @@ export default class TodoList extends Component {
 
 
     changeTodoListStatus(id) {
-        let targetTodoItem = this.props.todoList[parseInt(id) - 1];
-        targetTodoItem["status"] = !targetTodoItem["status"]
-        const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
-        axios.put(UPDATE_TODO_URL, targetTodoItem)
+        // let targetTodoItem = this.props.todoList[parseInt(id) - 1];
+        // targetTodoItem["status"] = !targetTodoItem["status"]
+        // const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
+        // axios.put(UPDATE_TODO_URL, targetTodoItem)
     }
 
     deleteTodoList(id) {
@@ -26,7 +26,7 @@ export default class TodoList extends Component {
             const DELETE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
             axios.delete(DELETE_TODO_URL).then(response => {
                 (response.status === 200) ? updateTodoList() :
-                 console.log("delete fail with status " + response.status);
+                 console.log("Delete todo list fail with status " + response.status);
             });
         }
     }
@@ -38,7 +38,7 @@ export default class TodoList extends Component {
                 dataSource={this.props.todoList}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <div>{item.content}</div>
+                        <div>{item.id}.{item.content}</div>
                         <Button type="primary"
                             danger
                             shape="circle"
