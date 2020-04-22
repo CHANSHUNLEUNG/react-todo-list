@@ -51,7 +51,7 @@ export default class TodoList extends Component {
                 dataSource={this.props.todoList}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <Text delete={item.status} onClick={this.changeTodoListStatus(item.id)}>
+                        <Text delete={!item.status} onClick={this.changeTodoListStatus(item.id)}>
                             {item.id}. {item.content}
                         </Text>
                         <Button type="primary"
