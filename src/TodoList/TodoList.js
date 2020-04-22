@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { List, Button,Typography } from 'antd';
+import { List, Button, Typography } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
+import { HTTP_OK } from '../Constants/TodoConstant';
 
 const { Text } = Typography;
 export default class TodoList extends Component {
@@ -15,16 +16,16 @@ export default class TodoList extends Component {
 
 
     changeTodoListStatus(id) {
-        const {updateTodoList} = this.props;
-        return function(){
+        const { updateTodoList } = this.props;
+        return function () {
             const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
             axios.get(UPDATE_TODO_URL).then(getResponse => {
-                if(getResponse.status === 200){
+                if (getResponse.status === HTTP_OK) {
                     let targetTodoItem = getResponse.data;
                     targetTodoItem["status"] = !targetTodoItem["status"];
-                    axios.put(UPDATE_TODO_URL,targetTodoItem).then(putResponse => {
-                        (putResponse.status === 200) ? updateTodoList() : 
-                        console.log("Update todo item failed with status " + putResponse.status);
+                    axios.put(UPDATE_TODO_URL, targetTodoItem).then(putResponse => {
+                        (putResponse.status === HTTP_OK) ? updateTodoList() :
+                            console.log("Update todo item failed with status " + putResponse.status);
                     })
                 }
             })
@@ -40,8 +41,8 @@ export default class TodoList extends Component {
         return function () {
             const DELETE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
             axios.delete(DELETE_TODO_URL).then(response => {
-                (response.status === 200) ? updateTodoList() :
-                 console.log("Delete todo item fail with status " + response.status);
+                (response.status === HTTP_OK) ? updateTodoList() :
+                    console.log("Delete todo item fail with status " + response.status);
             });
         }
     }

@@ -43,25 +43,25 @@ export default class TodoContainer extends Component {
             <>
                 <Row>
                     <Col span={24}>
-                        <Row gutter={[16,50]} justify="center" >
+                        <Row gutter={[16, 50]} justify="center" >
                             <Col span={10}>
                                 <PageHeader title="Todo List" />
                             </Col>
                         </Row>
                     </Col>
                     <Col span={24}>
-                        <Row gutter={[16,50]} justify="center">
+                        <Row gutter={[16, 50]} justify="center">
                             <Col span={10}>
                                 <TodoList todoList={this.state.todoList}
-                                updateTodoList={this.updateTodoList} />
+                                    updateTodoList={this.updateTodoList} />
                             </Col>
                         </Row>
                     </Col>
                     <Col span={24}>
                         <Row justify="center">
                             <Col span={10}>
-                                <TodoForm todoList={this.state.todoList} 
-                                updateTodoList={this.updateTodoList} />
+                                <TodoForm todoList={this.state.todoList}
+                                    updateTodoList={this.updateTodoList} />
                             </Col>
                         </Row>
                     </Col>
