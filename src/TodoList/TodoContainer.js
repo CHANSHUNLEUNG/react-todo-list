@@ -30,7 +30,6 @@ export default class TodoContainer extends Component {
     updateTodoList() {
         const TODO_LIST_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos";
         axios.get(TODO_LIST_URL).then(response => {
-            console.log(response.data);
             this.setState({
                 todoList: response.data,
             })
