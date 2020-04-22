@@ -3,8 +3,13 @@ import { Layout } from 'antd';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import axios from 'axios';
+import 'antd/dist/antd.css';
+import "./TodoContainer.css";
+import { Row, Col, Divider, PageHeader  } from 'antd';
 
-const { Header, Footer, Content } = Layout;
+const style = { background: '#0092ff', padding: '8px 0' };
+
+const { Header, Footer, Sider, Content } = Layout;
 
 export default class TodoContainer extends Component {
     constructor(props) {
@@ -31,17 +36,29 @@ export default class TodoContainer extends Component {
         })
     }
 
+
+
     render() {
         return (
-            <Layout>
-                <Header>TodoList</Header>
-                <Content>
-                    <TodoList todoList={this.state.todoList} />
-                </Content>
-                <Footer>
-                    <TodoForm updateTodoList={this.updateTodoList}/>
-                </Footer>
-            </Layout>
+            <div>
+                <Layout>
+                    <Header>
+                        <Row justify="center">
+                            <Col span={4}>
+                                <PageHeader className="site-page-header"
+                                 title="Todo List"/>
+                            </Col>
+                        </Row>
+                    </Header>
+                    <Content>
+                        <TodoList todoList={this.state.todoList} />
+                        hello content
+                    </Content>
+                    <Footer>
+                        <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
+                    </Footer>
+                </Layout>
+            </div>
         )
     }
 }
