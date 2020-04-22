@@ -28,7 +28,7 @@ export default class TodoForm extends Component {
             status: true,
         }).then(response => {
             (response.status === 201) ? this.props.updateTodoList() : 
-            console.log("Add todo list failed with status " + response.status);
+            console.log("Add todo item failed with status " + response.status);
         });
     }
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { List, Button } from 'antd';
+import { List, Button,Typography } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
+const { Text } = Typography;
 export default class TodoList extends Component {
 
     constructor(props) {
@@ -14,6 +15,20 @@ export default class TodoList extends Component {
 
 
     changeTodoListStatus(id) {
+        const {updateTodoList} = this.props;
+        return function(){
+            const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
+            axios.get(UPDATE_TODO_URL).then(getResponse => {
+                if(getResponse.status === 200){
+                    let targetTodoItem = getResponse.data;
+                    targetTodoItem["status"] = !targetTodoItem["status"];
+                    axios.put(UPDATE_TODO_URL,targetTodoItem).then(putResponse => {
+                        (putResponse.status === 200) ? updateTodoList() : 
+                        console.log("Update todo item failed with status " + putResponse.status);
+                    })
+                }
+            })
+        }
         // let targetTodoItem = this.props.todoList[parseInt(id) - 1];
         // targetTodoItem["status"] = !targetTodoItem["status"]
         // const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
@@ -26,7 +41,7 @@ export default class TodoList extends Component {
             const DELETE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
             axios.delete(DELETE_TODO_URL).then(response => {
                 (response.status === 200) ? updateTodoList() :
-                 console.log("Delete todo list fail with status " + response.status);
+                 console.log("Delete todo item fail with status " + response.status);
             });
         }
     }
@@ -38,7 +53,7 @@ export default class TodoList extends Component {
                 dataSource={this.props.todoList}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <div>{item.id}.{item.content}</div>
+                        <Text delete={item.status} onClick={this.changeTodoListStatus(item.id)}>{item.id}. {item.content}</Text>
                         <Button type="primary"
                             danger
                             shape="circle"
