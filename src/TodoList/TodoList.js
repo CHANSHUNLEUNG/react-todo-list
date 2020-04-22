@@ -23,7 +23,11 @@ export default class TodoList extends Component {
     render() {
         return (
             <div>
-                
+                {this.state.todoList.map((oneTodo) => {
+                    console.log(oneTodo);
+                    console.log("next");
+                    return "";
+                })}
             </div>
         )
     }
