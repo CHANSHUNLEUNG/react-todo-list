@@ -5,7 +5,8 @@ import TodoList from './TodoList';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import "./TodoContainer.css";
-import { Row, Col, Divider, PageHeader  } from 'antd';
+import { Row, Col, Divider, PageHeader, Card, List, Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 const style = { background: '#0092ff', padding: '8px 0' };
 
@@ -40,25 +41,50 @@ export default class TodoContainer extends Component {
 
     render() {
         return (
-            <div>
-                <Layout>
-                    <Header>
-                        <Row justify="center">
-                            <Col span={4}>
-                                <PageHeader className="site-page-header"
-                                 title="Todo List"/>
+            // <div>
+            //     <Layout>
+            //         <Header>
+            //             <Row justify="center">
+            //                 <Col span={4}>
+            //                     <PageHeader className="site-page-header"
+            //                         title="Todo List" />
+            //                 </Col>
+            //             </Row>
+            //         </Header>
+            //         <Content>
+            //             <TodoList todoList={this.state.todoList} />
+            //             hello content
+            //         </Content>
+            //         <Footer>
+            //             <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
+            //         </Footer>
+            //     </Layout>
+            // </div>
+            <>
+                <Row>
+                    <Col span={24}>
+                        <Row gutter={[16,50]} justify="center" >
+                            <Col span={10}>
+                                <PageHeader title="Todo List" />
                             </Col>
                         </Row>
-                    </Header>
-                    <Content>
-                        <TodoList todoList={this.state.todoList} />
-                        hello content
-                    </Content>
-                    <Footer>
-                        <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
-                    </Footer>
-                </Layout>
-            </div>
+                    </Col>
+                    <Col span={24}>
+                        <Row gutter={[16,50]} justify="center">
+                            <Col span={10}>
+                                <TodoList todoList={this.state.todoList}/>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col span={24}>
+                        <Row justify="center">
+                            <Col span={10}>
+                                <TodoForm todoList={this.state.todoList} updateTodoList={this.updateTodoList} />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </>
         )
     }
 }

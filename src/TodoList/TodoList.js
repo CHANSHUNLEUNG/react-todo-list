@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {List, Button} from 'antd';
+import {CloseOutlined} from '@ant-design/icons';
 
 export default class TodoList extends Component {
 
@@ -19,20 +21,24 @@ export default class TodoList extends Component {
         axios.put(UPDATE_TODO_URL, targetTodoItem)
     }
 
-    deleteTodoList(id){
+    deleteTodoList(id) {
         const DELETE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
         axios.delete(DELETE_TODO_URL);
     }
 
     render() {
         return (
-            <div>
-                {this.props.todoList.map((oneTodo) => {
-                    console.log(oneTodo);
-                    console.log("next");
-                    return "";
-                })}
-            </div>
+            <List
+                header={<div>Header</div>}
+                bordered
+                dataSource={this.props.todoList}
+                renderItem={item => (
+                    <List.Item key={item.id}>
+                        <div>{item.content}</div>
+                        <Button type="primary" danger shape="circle" icon={<CloseOutlined />} />
+                    </List.Item>
+                )}
+            />
         )
     }
 }
