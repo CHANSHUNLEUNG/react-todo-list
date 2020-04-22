@@ -5,6 +5,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import { HTTP_OK } from '../Constants/TodoConstant';
 
 const { Text } = Typography;
+
 export default class TodoList extends Component {
 
     constructor(props) {
@@ -30,10 +31,6 @@ export default class TodoList extends Component {
                 }
             })
         }
-        // let targetTodoItem = this.props.todoList[parseInt(id) - 1];
-        // targetTodoItem["status"] = !targetTodoItem["status"]
-        // const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
-        // axios.put(UPDATE_TODO_URL, targetTodoItem)
     }
 
     deleteTodoList(id) {
@@ -54,7 +51,9 @@ export default class TodoList extends Component {
                 dataSource={this.props.todoList}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <Text delete={item.status} onClick={this.changeTodoListStatus(item.id)}>{item.id}. {item.content}</Text>
+                        <Text delete={item.status} onClick={this.changeTodoListStatus(item.id)}>
+                            {item.id}. {item.content}
+                        </Text>
                         <Button type="primary"
                             danger
                             shape="circle"

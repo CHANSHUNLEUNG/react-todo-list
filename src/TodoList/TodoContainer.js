@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { Layout } from 'antd';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import "./TodoContainer.css";
-import { Row, Col, Divider, PageHeader, Card, List, Button } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
-
-const style = { background: '#0092ff', padding: '8px 0' };
-
-const { Header, Footer, Sider, Content } = Layout;
+import { Row, Col, PageHeader } from 'antd';
 
 export default class TodoContainer extends Component {
     constructor(props) {
