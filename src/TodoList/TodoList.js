@@ -57,14 +57,6 @@ export default class TodoList extends Component {
                         <Todo item={item}
                             changeTodoListStatus={this.changeTodoListStatus}
                             deleteTodoList={this.deleteTodoList} />
-                        {/* <Text delete={!item.status} onClick={this.changeTodoListStatus(item.id)}>
-                            {item.id}. {item.content}
-                        </Text>
-                        <Button type="primary"
-                            danger
-                            shape="circle"
-                            icon={<CloseOutlined />}
-                            onClick={this.deleteTodoList(item.id)} /> */}
                     </List.Item>
                 )}
             />
