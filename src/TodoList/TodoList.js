@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { List, Typography } from 'antd';
+import { List } from 'antd';
 import { HTTP_OK } from '../Constants/TodoConstant';
 import Todo from './Todo';
 
