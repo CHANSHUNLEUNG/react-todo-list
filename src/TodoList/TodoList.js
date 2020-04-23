@@ -3,6 +3,7 @@ import axios from 'axios';
 import { List, Button, Typography } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { HTTP_OK } from '../Constants/TodoConstant';
+import Todo from './Todo';
 
 const { Text } = Typography;
 
@@ -21,6 +22,7 @@ export default class TodoList extends Component {
         return function () {
             const UPDATE_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos/" + id;
             axios.get(UPDATE_TODO_URL).then(getResponse => {
+
                 if (getResponse.status === HTTP_OK) {
                     let targetTodoItem = getResponse.data;
                     targetTodoItem["status"] = !targetTodoItem["status"];
@@ -29,6 +31,7 @@ export default class TodoList extends Component {
                             console.log("Update todo item failed with status " + putResponse.status);
                     })
                 }
+
             })
         }
     }
@@ -51,14 +54,17 @@ export default class TodoList extends Component {
                 dataSource={this.props.todoList}
                 renderItem={item => (
                     <List.Item key={item.id}>
-                        <Text delete={!item.status} onClick={this.changeTodoListStatus(item.id)}>
+                        <Todo item={item}
+                            changeTodoListStatus={this.changeTodoListStatus}
+                            deleteTodoList={this.deleteTodoList} />
+                        {/* <Text delete={!item.status} onClick={this.changeTodoListStatus(item.id)}>
                             {item.id}. {item.content}
                         </Text>
                         <Button type="primary"
                             danger
                             shape="circle"
                             icon={<CloseOutlined />}
-                            onClick={this.deleteTodoList(item.id)} />
+                            onClick={this.deleteTodoList(item.id)} /> */}
                     </List.Item>
                 )}
             />

@@ -36,6 +36,7 @@ export default class TodoContainer extends Component {
         return (
             <>
                 <Row>
+
                     <Col span={24}>
                         <Row gutter={[16, 50]} justify="center" >
                             <Col span={10}>
@@ -43,6 +44,7 @@ export default class TodoContainer extends Component {
                             </Col>
                         </Row>
                     </Col>
+
                     <Col span={24}>
                         <Row gutter={[16, 50]} justify="center">
                             <Col span={10}>
@@ -51,14 +53,15 @@ export default class TodoContainer extends Component {
                             </Col>
                         </Row>
                     </Col>
+
                     <Col span={24}>
                         <Row justify="center">
                             <Col span={10}>
-                                <TodoForm todoList={this.state.todoList}
-                                    updateTodoList={this.updateTodoList} />
+                                <TodoForm updateTodoList={this.updateTodoList} />
                             </Col>
                         </Row>
                     </Col>
+
                 </Row>
             </>
         )

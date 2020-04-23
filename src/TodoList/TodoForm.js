@@ -24,10 +24,11 @@ export default class TodoForm extends Component {
 
     addTodoList() {
         const ADD_TODO_URL = "https://5e9ec500fb467500166c4658.mockapi.io/todos";
-        axios.post(ADD_TODO_URL, {
+        const newTodoItem = {
             content: this.state.todoContent,
             status: true,
-        }).then(response => {
+        }
+        axios.post(ADD_TODO_URL, newTodoItem).then(response => {
             (response.status === HTTP_CREATED) ? this.props.updateTodoList() :
                 console.log("Add todo item failed with status " + response.status);
         });
