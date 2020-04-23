@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { List, Button, Typography } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { List, Typography } from 'antd';
 import { HTTP_OK } from '../Constants/TodoConstant';
 import Todo from './Todo';
 
-const { Text } = Typography;
 
 export default class TodoList extends Component {
 
